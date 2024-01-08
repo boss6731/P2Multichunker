@@ -15,30 +15,30 @@ class Controle:
     
     def menu(self):
         txt = """
-        P2Multichunker: An easy tool to pack your mod assets into proper subdivided vpk's.
+P2Multichunker：一個簡單的工具，將您的 mod 資產打包到適當的細分 vpk 中。
 
-        ==INSTRUCTIONS==
+         ==說明==
 
-        a)-Place the executable under your mod directory where the 'materials','models',
-        'sounds' etc.. folders are located.
-        b)-Set your vpk path (option 1), which is normally located by default under
-            Windows 64bits C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin
-            Windows 32bits C:\Program Files\Steam\steamapps\common\Portal 2\\bin
-        c)-Execute P2Multichunker (option 2) and wait untill the process is finished.
+         a)-將可執行檔放在 mod 目錄下，其中包含「materials」、「models」、
+         “聲音”等資料夾位於其中。
+         b)-設定您的 vpk 路徑（選項 1），預設通常位於
+             Windows 64 位元 C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin
+             Windows 32 位元 C:\Program Files\Steam\steamapps\common\Portal 2\\bin
+         c)-執行 P2Multichunker（選項 2）並等待流程完成。
 
-        Option 3: Just generates the responsefile, a txt file containing a list of all your
-        non vpk packed assets.
+         選項 3：僅產生回應文件，這是一個 txt 文件，其中包含您的所有資訊的列表
+         非 vpk 打包資產。
         
-        Option 4: Changes the prefix your generated vpk files will have, the default is "pak01".
+         選項 4：更改產生的 vpk 檔案的前綴，預設為「pak01」。.
 
-        OPTIONS
-            1-VPK.exe path
-            2-Execute P2Multichunker
-            3-Generate only Responsefile
-            4-Change vpk file prefix.
-            5-Manage extensions
-            6-EXIT
-        ENTER A NUMBER: 
+選項
+             1-VPK.exe路徑
+             2-執行 P2Multichunker
+             3-僅產生響應文件
+             4-更改 vpk 檔案前綴。
+             5-管理擴展
+             6-退出
+         輸入數字：
         """
         opcao = int(input(txt))
         return opcao
@@ -89,7 +89,7 @@ class Controle:
         with open('data.json','w') as outfile:
             json.dump( controle.data,outfile)
 
-    #Checks if the file still exits and get data from it       
+    #檢查文件是否仍然存在並從中獲取數據      
     def data_check(self,type):
         if os.path.exists('data.json'):
             with open('data.json') as json_file:
@@ -101,7 +101,7 @@ class Controle:
             controle.startupCheck()
             return 0
 
-    #Initial check for files    
+    #初步檢查文件   
     def startupCheck(self):
         if os.path.exists('data.json'):
             try:
@@ -125,7 +125,7 @@ class Controle:
             print("Startup Check: [OK]")
             controle.main()
 
-    #Create Responsefile, as a loose file or to be used in the creation.
+    #建立回應文件，作為鬆散文件或在建立中使用.
     def createResponsefile(self):
         system('cls')
         print("GNERATING: responsefile.txt")
@@ -140,7 +140,7 @@ class Controle:
         out.close()
         print("DONE")
 
-    #Handles the prefix change that will be used in the generated VPK files
+    #處理將在生成的 VPK 檔案中使用的前綴更改
     def changeprefix(self):
         print("Your current prefix is: ")
         controle.data_check("vpk_prefix")
@@ -169,7 +169,7 @@ class Controle:
         vpk_prefix = str(prefix)
         controle.createResponsefile()
         
-        #This section generates the batch file and executes (for some reason I could only execute the process like this)
+        #本節生成批次檔並執行（由於某種原因我只能像這樣執行該過程）
         title_text = 'ECHO !#!#!#!#!===== GENERATING VPK FILES DO NOT CLOSE THIS WINDOW UNTIL ITS DONE =====!#!#!#!#! \n'
         print("VPK Path: " + controle.data_check("vpk_path"))
         print("VPK Prefix used: " + controle.data_check("vpk_prefix"))
