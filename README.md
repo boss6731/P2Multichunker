@@ -1,56 +1,55 @@
-# P2Multichunker 
+# P2多塊
 
-An easy tool to pack your mod assets into proper subdivided vpk's.
+一個簡單的工具，可將您的 mod 資產打包到適當的細分 vpk 中。
 
-## INSTRUCTIONS
+＃＃ 指示
 
-1. Place the executable under your mod directory where the 'materials','models','sounds' etc.. folders are located.
-1. Set your vpk path (option 1), which is normally located by default under
-	1. Windows 64bits C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin
-	1. Windows 32bits C:\Program Files\Steam\steamapps\common\Portal 2\\bin
-1. Execute P2Multichunker (option 2) and wait untill the process is finished.
+1. 將可執行檔放在「materials」、「models」、「sounds」等資料夾所在的 mod 目錄下。
+1. 設定您的 vpk 路徑（選項 1），預設通常位於
+1. Windows 64 位元 C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin
+1. Windows 32 位元 C:\Program Files\Steam\steamapps\common\Portal 2\\bin
+1. 執行 P2Multichunker（選項 2）並等待流程完成。
 
 
 ## OPTIONS:
-  1-VPK.exe path
+  1-VPK.exe路徑
 	
-		*Handles the vpk.exe path on your system
+		*在處理系統上的 vpk.exe 路徑
 			
-  2-Execute P2Multichunker
+  2-執行 P2Multichunker
 	
-		*Generates the vpk files
+		*產生 vpk 文件
 			
-  3-Generate only Responsefile	
+  3-僅生成回應文件	
 	
-		*Generates txt file with a list of all your non-packed assets
+		*生成 txt 文件，其中包含所有未打包資產的列表
 			
-  4- Changes the prefix your generated vpk files will have, the default is "pak01".
+  4- 更改生成的 vpk 檔案的前綴，預設為“pak01”.
 
-		*Manages the name of your generated vpk's.
+		*管理生成的 vpk 的名稱.
 		
-  5- Manages the extensions that will be scanned for inclusion in your responsefile.
+  5- 管理將被掃描以包含在回應檔案中的副檔名.
         
-		*You can ADD or REMOVE extensions that will be inlcuded in your 
-		 For easy problems handling this is reseted everytime you open the program
+		*您可以新增或刪除將包含在您的擴充功能中的擴充功能。為了方便處理問題，每次打開程式時都會重置該擴充功能。
 
 //CC BY-NC 4.0//
-Creative Commons
+創作共用
 
-_Attribution-NonCommercial 4.0 International_
+_署名-非商業4.0國際化_
 
 
-_You are free to:_
+_您可以自由地：_
 
-**Share** — copy and redistribute the material in any medium or format
+**分享** — 以任何媒介或格式複製和重新分發資料
 
-**Adapt** — remix, transform, and build upon the material
+**改編** — 重新混合、轉換並在材料的基礎上進行構建
 
-_Under the following terms:_
+_根據以下條款：_
 
-**Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+**歸屬** — 您必須給出適當的來源，提供許可證的鏈接，並註明是否進行了更改。 您可以以任何合理的方式這樣做，但不得以任何暗示授權人認可您或您的使用的方式。
 
-**NonCommercial** — You may not use the material for commercial purposes.
+**非商業性** — 您不得將該資料用於商業目的。
 
-**No additional restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+**無額外限制** — 您不得應用法律條款或技術措施來合法限制他人執行許可證允許的任何操作。
 
-The licensor cannot revoke these freedoms as long as you follow the license terms.
+只要您遵守授權條款，授權人就不能撤銷這些自由.
