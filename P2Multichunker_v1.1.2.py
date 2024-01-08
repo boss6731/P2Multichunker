@@ -17,33 +17,33 @@ class Controle:
     
     def menu(self):
         txt = """
-        P2Multichunker: An easy tool to pack your mod assets into proper subdivided vpk's.
+P2Multichunker：一個簡單的工具，將您的 mod 資產打包到適當的細分 vpk 中。
 
-        ==INSTRUCTIONS==
+         ==說明==
 
-        a)-Place the executable under your mod directory where the 'materials','models',
-        'sounds' etc.. folders are located.
-        b)-Set your vpk path (option 1), which is normally located by default under:
-            Windows 64bits C:\Program Files (x86)\Steam\steamapps\common\<GAME>\\bin
-            Windows 32bits C:\Program Files\Steam\steamapps\common\<GAME>\\bin
-        c)-Execute P2Multichunker (option 2) and wait untill the process is finished.
+         a)-將可執行檔放在 mod 目錄下，其中包含「materials」、「models」、
+         “聲音”等資料夾位於其中。
+         b)-設定您的 vpk 路徑（選項 1），預設通常位於：
+             Windows 64 位元 C:\Program Files (x86)\Steam\steamapps\common\<GAME>\\bin
+             Windows 32 位元 C:\Program Files\Steam\steamapps\common\<GAME>\\bin
+         c)-執行 P2Multichunker（選項 2）並等待流程完成。
 
-        Option 3: Just generates the responsefile, a txt file containing a list of all your
-        non vpk packed assets.
+         選項 3：僅產生回應文件，這是一個 txt 文件，其中包含您的所有資訊的列表
+         非 vpk 打包資產。
         
-        Option 4: Changes the prefix your generated vpk files will have, the default is "pak01".
+         選項 4：更改產生的 vpk 檔案的前綴，預設為「pak01」。
 
-        Option 5: Manages the extensions that will be scanned for inclusion in your responsefile.
-        (For easy problems handling this is reseted everytime you open the program)
+         選項 5：管理將掃描以包含在回應檔案中的副檔名。
+         （為了方便處理問題，每次開啟程式時都會重置）
 
-        OPTIONS
-            1-VPK.exe path
-            2-Execute P2Multichunker
-            3-Generate only Responsefile
-            4-Change .vpk file prefix.
-            5-Manage extensions
-            6-EXIT
-        ENTER A NUMBER: 
+         選項
+             1-VPK.exe路徑
+             2-執行 P2Multichunker
+             3-僅產生響應文件
+             4-更改 .vpk 檔案前綴。
+             5-管理擴展
+             6-退出
+         輸入數字：
         """
         opcao = int(input(txt))
         return opcao
@@ -56,7 +56,7 @@ class Controle:
                 opcao = self.menu()
             except ValueError:
                 system('cls')
-                print("INPUT INVALID \n")
+                print("輸入無效\n")
                 opcao = self.menu()
                 
             if opcao in opcoes:
@@ -65,12 +65,12 @@ class Controle:
                 if opcao == 6:
                     break
                 else:
-                    print("Opção inválida")
+                    print("無效選項")
                     
     def submenu_title(self):
         txt ="""
-        Choose an option to either ADD or REMOVE files that 
-        the program will scan to include in your responsefile.
+        選擇一個選項來新增或刪除文件
+         該程式將掃描並包含在您的回應檔案中.
         ---------------------------------------------------------------
         MATERIALS |MODELS   |PARTICLES |SCENES  |SOUNDS  |CONFIG. FILES
         ---------------------------------------------------------------
@@ -81,17 +81,17 @@ class Controle:
         ---------------------------------------------------------------
                                     CONFIGS
         ---------------------------------------------------------------
-        11) RESET SEARCH PARAMETERS
-        12) RETURN
+        11) 重置搜尋參數
+        12) 返回
 
-        SELECT OPTION: 
+       選擇選項： 
         """
-        print("CURRENT SEARCH PARAMETERS")
+        print("目前搜尋參數")
         print(file_types)
         opcao = int(input(txt))
         return opcao
         
-    #Handles files include in the responsefile/vpk
+    #處理回應檔案/vpk 中包含的文件
     def submenu_choices(self):
         system('cls')
         while True:
@@ -99,11 +99,11 @@ class Controle:
                 opcao = self.submenu_title()
             except ValueError:
                 system('cls')
-                print("INPUT INVALID \n")
+                print("輸入無效\n")
                 opcao = controle.submenu_choices()
                 
             if opcao > 12:
-                print("invalid option \n")
+                print("無效選項\n")
                 self.submenu_choices()
             else:
                 typec = self.switch(opcao)   
@@ -111,17 +111,17 @@ class Controle:
                     if typec in file_types:
                         system('cls')
                         file_types.remove(typec)
-                        print ("\n."+typec +" was REMOVED from the search \n")     
+                        print ("\n."+typec +"已從搜尋中刪除\n")     
                     else:
                         system('cls')
                         file_types.append(typec)
-                        print ("\n."+typec +" was ADDED to the search \n")
+                        print ("\n."+typec +"已加入搜尋\n")
                         
                 if opcao == 11 and len(file_types) < 11:
                     file_types.clear()
                     for x in range(0,10):
                         file_types.append(self.switch(x))
-                    print ("RESET completed")
+                    print ("重置完成")
                     self.submenu_choices()
                 if opcao == 12:
                     controle.main()
@@ -135,40 +135,40 @@ class Controle:
         }
         return switcher.get(op)
 
-    #Handles VPK path change
+    #處理 VPK 路徑變更
     def opcao1(self):
         system('cls')
-        print("Your current Path is: ")
+        print("您目前的路徑是: ")
         print(self.get_path()+"\n")
-        choice = input("Do you wish to update y/n?: ")
+        choice = input("您想更新 y/n 嗎？: ")
         if choice == 'y' or choice == 'Y':
-            controle.data_insert("vpk_path","")
-            txt = """Enter VPK path:"""
+            controle.data_insert("vpk_路徑","")
+            txt = """輸入VPK路徑:"""
             vpk_path = input(txt)
             isFile = os.path.isdir(vpk_path)
             if isFile == True:
                 vpk_path = vpk_path.replace('\\','\\')
                 vpk_path = vpk_path+'\\vpk.exe'
-                print (vpk_path)
+                print (vpk_路徑)
                 controle.data_insert("vpk_path",vpk_path)
                 controle.data_check("vpk_path")
             else:
                 print("\n")
-                print("VPK.exe not found on: "+vpk_path)
-                print("Please check for spelling errors or insert a vaild directory")
-                print("EXAMPLE: C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin")
+                print("找不到 VPK.exe: "+vpk_path)
+                print("請檢查拼字錯誤或插入有效目錄")
+                print("例如：C:\Program Files (x86)\Steam\steamapps\common\Portal 2\\bin")
                 print("\n")
                 controle.opcao1()
         else:
             controle.main()
             
-    #Inserts data into VPK    
+    #將資料插入 VPK    
     def data_insert(self,type,path):
         controle.data[type] = path
         with open('data.json','w') as outfile:
             json.dump( controle.data,outfile)
 
-    #Checks if the file still exits and get data from it       
+    #檢查檔案是否仍然存在並從中獲取數據       
     def data_check(self,type):
         with open('data.json') as json_file:
             controle.data = json.load(json_file)
@@ -181,42 +181,42 @@ class Controle:
     def get_prefix(self):    
         return str(controle.data_check("vpk_prefix"))
 
-    #Initial check for files    
+    #初步檢查文件    
     def startupCheck(self):
 
         if os.path.exists('data.json'):
             try:
-                print("Startup Check: [INITIATING]")
+                print("啟動檢查：[正在啟動]")
                 time.sleep(1)
-                print("Current VPK Path: " + self.get_path())
-                print("Current VPK Prefix: " + self.get_prefix())
-                print("Startup Check: [OK]")
+                print("當前VPK路徑: " + self.get_path())
+                print("當前 VPK 前綴: " + self.get_prefix())
+                print("啟動檢查：[確定]")
                 time.sleep(2)
                 controle.main()
             except (ValueError,KeyError):
-                print("Startup Check: [FAIL]")
+                print("啟動檢查：[失敗]")
                 time.sleep(1)
-                print("CORRUPT SAVE FILE, RESTARTING... \n")
+                print("儲存文件損壞，重新啟動... \n")
                 os.remove('data.json')
                 time.sleep(2)
                 controle.startupCheck()
                 
         else:
-            print("Startup Check: [GENERATING FILE NEEDED]")
+            print("啟動檢查：[需要生成文件]")
             time.sleep(2)
             controle.data_insert("vpk_path","C:\\Program Files (x86)\\Steam\\steamapps\\common\\Portal 2\\bin\\vpk.exe")
             controle.data_insert("vpk_prefix","pak01")
-            print("Current VPK Path: " + self.get_path())
-            print("Current VPK Prefix: " + self.get_prefix())
+            print("目前VPK路徑: " + self.get_path())
+            print("當前 VPK 前綴: " + self.get_prefix())
             time.sleep(2)
-            print("Startup Check: [OK]")
+            print("啟動檢查：[確定]")
             time.sleep(1)
             controle.main()
 
     #Create Responsefile, as a loose file or to be used in the creation.
     def createResponsefile(self):
         system('cls')
-        print("GENERATING: responsefile.txt")
+        print("生成：responsefile.txt")
         response_path = join(os.getcwd(),"responsefile.txt")
         out = open(response_path,'w')
         len_cd = len(os.getcwd()) + 1
@@ -226,12 +226,12 @@ class Controle:
                             if len(file_types) and file.rsplit(".")[-1] in file_types:
                                     out.write(os.path.join(root[len_cd:].replace("/","\\"),file) + "\n")
         out.close()
-        print("DONE")
+        print("完畢")
 
-    #Handles the prefix change that will be used in the generated VPK files
+    #處理將在生成的 VPK 檔案中使用的前綴更改
     def changeprefix(self):
         system('cls')
-        print("Your current prefix is: ")
+        print("您目前的前綴是: ")
         print(self.get_prefix()+"\n")
         choice = input("Do you wish to update y/n?: ")
         if choice == 'y' or choice == 'Y':
@@ -242,31 +242,31 @@ class Controle:
                 controle.data_check("vpk_prefix")
             else:
                 print("\n")
-                print( vpk_prefix + " is not a valid prefix")
-                print("Please check for spelling errors or insert a vaild prefix")
+                print( vpk_prefix + " 不是有效的前綴")
+                print("請檢查拼字錯誤或插入有效的前綴")
                 print("\n")
                 controle.changeprefix()
          #else:
              #controle.main()
 
-    #GENERATES VPKs
+    #生成 VPK
     def p2_multichunk(self):
         system('cls')
-        path = controle.data_check("vpk_path")
-        prefix = controle.data_check("vpk_prefix")
+        path = controle.data_check("vpk_路徑")
+        prefix = controle.data_check("vpk_前綴")
         vpk_path = str(path)
         vpk_prefix = str(prefix)
         
         system('cls')
-        print("CURRENT SEARCH PARAMETERS")
+        print("目前搜尋參數")
         print(file_types)
         controle.createResponsefile()
-        print("Current VPK Path: " + vpk_path)
-        print("Current VPK Prefix: " + vpk_prefix)
+        print("目前VPK路徑: " + vpk_path)
+        print("當前 VPK 前綴: " + vpk_prefix)
         print("\n")
 
         #This section generates the batch file and executes (for some reason I could only execute the process like this)
-        title_text = 'ECHO !#!#!#!#!===== GENERATING VPK FILES DO NOT CLOSE THIS WINDOW UNTIL ITS DONE =====!#!#!#!#! \n'
+        title_text = 'ECHO !#!#!#!#!===== 生成 VPK 檔案在完成之前不要關閉此窗口 =====!#!#!#!#! \n'
         
         directory = join(os.getcwd())
         with open(os.path.join(directory, 'packing.bat'), 'w') as OPATH:
